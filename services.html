@@ -162,5 +162,38 @@
       </div>
     </div>
   </footer>
+
+  <!-- Floating Call Button -->
+  <div class="floating-call">
+    <a href="tel:9193670728" class="call-button">
+      <i class="fas fa-phone"></i>
+      <span>Call Now</span>
+    </a>
+  </div>
+
+  <!-- Back to top button -->
+  <div class="back-to-top" id="backToTop">
+    <i class="fas fa-chevron-up"></i>
+  </div>
+
+  <script>
+    // Show/hide back to top button
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.classList.add('show');
+      } else {
+        backToTop.classList.remove('show');
+      }
+    });
+
+    // Smooth scroll to top when clicked
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
 </body>
 </html>

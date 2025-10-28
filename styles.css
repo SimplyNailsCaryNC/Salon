@@ -28,14 +28,27 @@ h2::after {
   margin: 15px auto;
 }
 
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #000;
+  border-bottom: 2px solid goldenrod;
+}
+
 header nav ul {
   display: flex;
   justify-content: center;
   list-style: none;
   padding: 1.2rem;
-  background: #000;
   margin: 0;
-  border-bottom: 2px solid goldenrod;
+}
+
+/* Add padding to body to prevent content from going under fixed header */
+body {
+  padding-top: 60px;
 }
 
 nav ul li {
@@ -603,6 +616,51 @@ header {
   }
 }
 
+/* Back to top button */
+.back-to-top {
+  position: fixed;
+  bottom: 90px;
+  left: 20px;
+  z-index: 1000;
+  background: #000;
+  color: #fff;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: #222;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+.back-to-top i {
+  color: goldenrod;
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.back-to-top:hover i {
+  transform: translateY(-2px);
+}
+
 /* Floating Call Button */
 .floating-call {
   position: fixed;
@@ -643,6 +701,51 @@ header {
   50% {
     transform: translateY(-10px);
   }
+}
+
+/* Back to top button */
+.back-to-top {
+  position: fixed;
+  bottom: 90px;
+  left: 20px;
+  z-index: 1000;
+  background: #000;
+  color: #fff;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: #222;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+.back-to-top i {
+  color: goldenrod;
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.back-to-top:hover i {
+  transform: translateY(-2px);
 }
 
 /* Responsive Design */
