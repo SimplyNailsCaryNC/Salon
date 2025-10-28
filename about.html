@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Simply Nails</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="page-load">
+  <header>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html" class="active">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="about animate-on-scroll">
+    <h2>About Us</h2>
+    <p class="about-intro animate-on-scroll delay-200">Welcome to Simply Nails, Cary's premier destination for luxury nail care and artistic expression.</p>
+    
+    <div class="about-content">
+      <div class="about-section animate-on-scroll delay-300">
+        <h3>Our Story</h3>
+        <p>Established in the heart of Cary, North Carolina, Simply Nails was founded on a simple yet powerful principle: every client deserves an exceptional experience. Located at 2718 NC-55 Highway, we've become a trusted name in luxury nail care, known for our dedication to quality, creativity, and client satisfaction.</p>
+      </div>
+
+      <div class="about-section">
+        <h3>Our Commitment</h3>
+        <p>At Simply Nails, we believe in more than just nail care—we create experiences. Our commitment to excellence is reflected in every aspect of our service:</p>
+        <ul class="commitment-list">
+          <li>Rigorous sterilization and hygiene protocols</li>
+          <li>Premium, carefully selected products</li>
+          <li>Continuous training in latest techniques</li>
+          <li>Personalized attention to every client</li>
+        </ul>
+      </div>
+
+      <div class="about-section">
+        <h3>The Simply Nails Experience</h3>
+        <p>Step into our modern, welcoming space where luxury meets comfort. Our experienced technicians combine technical precision with artistic flair to deliver results that exceed expectations. From essential maintenance to elaborate nail art, we take pride in helping you express your personal style.</p>
+      </div>
+
+      <div class="about-section">
+        <h3>Our Services</h3>
+        <p>We offer a comprehensive range of services including:</p>
+        <ul class="services-list">
+          <li>Classic and Gel Manicures</li>
+          <li>Luxurious Pedicure Treatments</li>
+          <li>Odor-Free Dipping Powder</li>
+          <li>Professional Acrylic Services</li>
+          <li>Custom Nail Art Design</li>
+        </ul>
+      </div>
+
+      <div class="about-section">
+        <h3>Visit Us</h3>
+        <p>Join us Monday through Friday from 10:00 AM to 6:30 PM, or Saturday from 10:00 AM to 6:00 PM. Whether you're preparing for a special occasion or treating yourself to some well-deserved care, we're here to ensure your visit is nothing short of exceptional.</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Scroll animation
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.25
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all elements with animate-on-scroll class
+    document.querySelectorAll('.animate-on-scroll').forEach((element) => {
+      observer.observe(element);
+    });
+  </script>
+
+  <footer id="contact" class="footer-wrapper">
+    <div class="footer-grid">
+      <div class="footer-column">
+        <h3>Simply Nails</h3>
+        <p>Cary's Luxury Nail Spa</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/simplynailscary/" class="social-link" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-facebook"></i> Facebook
+          </a>
+          <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-instagram"></i> Instagram
+          </a>
+          <a href="https://www.yelp.com/biz/simply-nails-cary" class="social-link" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-yelp"></i> Yelp
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Contact Us</h3>
+        <p>2718 NC-55 Hwy, Cary, NC 27519</p>
+        <p>(919) 367-0728</p>
+        <p>Mon–Fri: 10:00 AM – 6:30 PM<br>Sat: 10:00 AM – 6:00 PM<br>Sun: Closed</p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Find Us</h3>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.9999999999995!2d-78.87017!3d35.78475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89ac5f1234567890%3A0xabcdef1234567890!2s2718%20NC-55%20Hwy%2C%20Cary%2C%20NC%2027519!5e0!3m2!1sen!2sus!4v1700000000000"
+          width="100%"
+          height="150"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+      <div class="copyright">
+        <p>Copyright © 2025 Simply Nails Cary NC</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

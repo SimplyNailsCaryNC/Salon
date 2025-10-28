@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Services — Simply Nails</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="page-load">
+  <header>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="services" class="services animate-on-scroll">
+    <h2>Our Signature Services</h2>
+    <div class="services-grid">
+      <div class="service-card animate-on-scroll delay-200">
+        <h3>Manicure Services</h3>
+        <div class="service-item">
+          <span class="service-name">Basic Manicure</span>
+          <span class="service-price">$23</span>
+          <p class="service-description">Classic nail care with regular polish</p>
+        </div>
+        <div class="service-item">
+          <span class="service-name">Gel Manicure</span>
+          <span class="service-price">$36</span>
+          <p class="service-description">Long-lasting gel polish application</p>
+        </div>
+        <div class="service-item">
+          <span class="service-name">Gel Manicure with Take Off</span>
+          <span class="service-price">$38</span>
+          <p class="service-description">Includes removal of previous gel polish</p>
+        </div>
+      </div>
+
+      <div class="service-card animate-on-scroll delay-300">
+        <h3>Pedicure Services</h3>
+        <div class="service-item">
+          <span class="service-name">Basic Pedicure</span>
+          <span class="service-price">$34</span>
+          <p class="service-description">Essential foot care and polish</p>
+        </div>
+        <div class="service-item">
+          <span class="service-name">Deluxe Pedicure</span>
+          <span class="service-price">$38</span>
+          <p class="service-description">Enhanced treatment with extra care</p>
+        </div>
+        <div class="service-item">
+          <span class="service-name">Premium Pedicure</span>
+          <span class="service-price">$50</span>
+          <p class="service-description">Luxury treatment with premium products</p>
+        </div>
+        <div class="service-item">
+          <span class="service-name">Collagen Pedicure</span>
+          <span class="service-price">$70</span>
+          <p class="service-description">Ultimate spa experience with collagen treatment</p>
+        </div>
+      </div>
+      
+      <div class="service-card animate-on-scroll delay-400">
+        <h3>Dipping Powder (Odor Free)</h3>
+        <div class="service-item">
+          <span class="service-name">Dipping Powder</span>
+          <span class="service-price">from $45</span>
+          <p class="service-description">Odor-free dipping powder application</p>
+        </div>
+        <div class="service-item">
+          <span class="service-name">Dipping Full Set</span>
+          <span class="service-price">from $55</span>
+          <p class="service-description">Complete dipping powder service</p>
+        </div>
+      </div>
+
+      <div class="service-card animate-on-scroll delay-400">
+        <h3>Acrylic</h3>
+        <div class="service-item">
+          <span class="service-name">Full Set</span>
+          <span class="service-price">from $45</span>
+          <p class="service-description">Complete acrylic nail enhancement</p>
+        </div>
+        <div class="service-item">
+          <span class="service-name">Fill In</span>
+          <span class="service-price">from $35</span>
+          <p class="service-description">Maintenance for existing acrylic nails</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Scroll animation
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.25
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all elements with animate-on-scroll class
+    document.querySelectorAll('.animate-on-scroll').forEach((element) => {
+      observer.observe(element);
+    });
+  </script>
+
+  <footer id="contact" class="footer-wrapper">
+    <div class="footer-grid">
+      <div class="footer-column">
+        <h3>Simply Nails</h3>
+        <p>Cary's Luxury Nail Spa</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/simplynailscary/" class="social-link" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-facebook"></i> Facebook
+          </a>
+          <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-instagram"></i> Instagram
+          </a>
+          <a href="https://www.yelp.com/biz/simply-nails-cary" class="social-link" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-yelp"></i> Yelp
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Contact Us</h3>
+        <p>2718 NC-55 Hwy, Cary, NC 27519</p>
+        <p>(919) 367-0728</p>
+        <p>Mon–Fri: 10:00 AM – 6:30 PM<br>Sat: 10:00 AM – 6:00 PM<br>Sun: Closed</p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Find Us</h3>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.9999999999995!2d-78.87017!3d35.78475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89ac5f1234567890%3A0xabcdef1234567890!2s2718%20NC-55%20Hwy%2C%20Cary%2C%20NC%2027519!5e0!3m2!1sen!2sus!4v1700000000000"
+          width="100%"
+          height="150"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+      <div class="copyright">
+        <p>Copyright © 2025 Simply Nails Cary NC</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
