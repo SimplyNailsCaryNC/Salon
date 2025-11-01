@@ -114,9 +114,9 @@
       
       <!-- Modern Hero Features -->
       <div class="hero-features animate-on-scroll delay-350">
-        <div class="feature-badge open-status">
+        <div class="feature-badge open-status" id="storeStatus">
           <i class="fas fa-clock"></i>
-          <span>Open Today • 10AM-6:30PM</span>
+          <span id="statusText">Open Today • 10AM-6:30PM</span>
         </div>
         <div class="feature-badge walk-ins">
           <i class="fas fa-user-check"></i>
@@ -124,7 +124,7 @@
         </div>
         <div class="feature-badge pricing">
           <i class="fas fa-tag"></i>
-          <span>Services from $25-$60</span>
+          <span>Services from $23-$50</span>
         </div>
       </div>
       
@@ -148,7 +148,7 @@
           <i class="fas fa-hand-sparkles"></i>
         </div>
         <h3>Manicures</h3>
-        <p class="price-range">$25 - $45</p>
+        <p class="price-range">$23 - $38</p>
         <p class="service-desc">Classic & gel polish</p>
       </div>
       <div class="service-card-mini animate-on-scroll delay-300">
@@ -156,7 +156,7 @@
           <i class="fas fa-spa"></i>
         </div>
         <h3>Pedicures</h3>
-        <p class="price-range">$35 - $60</p>
+        <p class="price-range">$34 - $50</p>
         <p class="service-desc">Relaxing & rejuvenating</p>
       </div>
       <div class="service-card-mini animate-on-scroll delay-400">
@@ -164,7 +164,7 @@
           <i class="fas fa-gem"></i>
         </div>
         <h3>Dip Powder</h3>
-        <p class="price-range">$40 - $50</p>
+        <p class="price-range">$45 - $55</p>
         <p class="service-desc">Long-lasting & odor-free</p>
         <div class="popular-badge">Most Popular</div>
       </div>
@@ -173,7 +173,7 @@
           <i class="fas fa-paint-brush"></i>
         </div>
         <h3>Acrylics</h3>
-        <p class="price-range">$45 - $65</p>
+        <p class="price-range">$35 - $45</p>
         <p class="service-desc">Custom shapes & designs</p>
       </div>
     </div>
@@ -341,6 +341,32 @@
         behavior: 'smooth'
       });
     });
+
+    // Dynamic Store Hours Status
+    function updateStoreStatus() {
+      const now = new Date();
+      const day = now.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+      const storeStatusElement = document.getElementById('storeStatus');
+      const statusTextElement = document.getElementById('statusText');
+      
+      // Store hours: Mon-Fri 10AM-6:30PM, Sat 10AM-6PM, Sun Closed
+      if (day === 0) { // Sunday - Closed
+        storeStatusElement.className = 'feature-badge closed-status';
+        statusTextElement.textContent = 'Closed Today • Open Mon 10AM';
+      } else if (day >= 1 && day <= 5) { // Monday - Friday
+        storeStatusElement.className = 'feature-badge open-status';
+        statusTextElement.textContent = 'Open Today • 10AM-6:30PM';
+      } else if (day === 6) { // Saturday
+        storeStatusElement.className = 'feature-badge open-status';
+        statusTextElement.textContent = 'Open Today • 10AM-6PM';
+      }
+    }
+
+    // Update status on page load
+    updateStoreStatus();
+
+    // Update status every hour in case someone leaves the page open
+    setInterval(updateStoreStatus, 3600000); // 1 hour = 3,600,000 milliseconds
   </script>
 </body>
 </html>
