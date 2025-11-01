@@ -142,21 +142,41 @@ nav ul li a {
   text-decoration: none;
   color: #fff;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
   padding: 0.75rem 1rem;
   border-radius: 3px;
   display: block;
   border-bottom: 1px solid rgba(218, 165, 32, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+nav ul li a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.3), transparent);
+  transition: left 0.5s ease;
 }
 
 nav ul li a:hover {
   color: goldenrod;
+  transform: translateY(-1px);
+  background-color: rgba(218, 165, 32, 0.1);
+}
+
+nav ul li a:hover::before {
+  left: 100%;
 }
 
 nav ul li a.active {
   color: goldenrod;
   border-bottom: 2px solid goldenrod;
   padding-bottom: 3px;
+  background-color: rgba(218, 165, 32, 0.15);
 }
 
 .hero {
@@ -226,10 +246,62 @@ nav ul li a.active {
 
 .hero p {
   font-size: 1.4rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   color: white;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   line-height: 1.6;
+}
+
+/* Modern Hero Features */
+.hero-features {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.feature-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(218, 165, 32, 0.9);
+  color: #000;
+  padding: 0.75rem 1rem;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.feature-badge:hover {
+  background: rgba(218, 165, 32, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.feature-badge i {
+  font-size: 1rem;
+}
+
+.open-status {
+  background: rgba(34, 197, 94, 0.9);
+  color: white;
+}
+
+.open-status:hover {
+  background: rgba(34, 197, 94, 1);
+}
+
+.walk-ins {
+  background: rgba(59, 130, 246, 0.9);
+  color: white;
+}
+
+.walk-ins:hover {
+  background: rgba(59, 130, 246, 1);
 }
 
 .cta-button {
@@ -242,11 +314,34 @@ nav ul li a.active {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.6s ease;
 }
 
 .cta-button:hover {
   background: #d4af37;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(218, 165, 32, 0.4);
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:active {
+  transform: translateY(0);
 }
 
 section {
@@ -268,6 +363,90 @@ section.hero {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
+}
+
+/* Home Page Service Preview Cards */
+.services-preview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.service-card-mini {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card-mini:hover {
+  transform: translateY(-8px);
+  border-color: goldenrod;
+  box-shadow: 0 12px 30px rgba(218, 165, 32, 0.2);
+}
+
+.service-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, goldenrod, #f4d03f);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  transition: all 0.3s ease;
+}
+
+.service-icon i {
+  font-size: 24px;
+  color: white;
+}
+
+.service-card-mini:hover .service-icon {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(218, 165, 32, 0.3);
+}
+
+.service-card-mini h3 {
+  color: #333;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.price-range {
+  color: goldenrod;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+.service-desc {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.popular-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: linear-gradient(45deg, #e74c3c, #c0392b);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  transform: rotate(15deg);
+  box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
 }
 
 .service-card {
@@ -341,9 +520,24 @@ section.hero {
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   text-align: left;
   border: 1px solid transparent;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   opacity: 0;
   transform: translateY(30px);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: goldenrod;
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+  transform-origin: bottom;
 }
 
 .testimonial-card.animate {
@@ -353,8 +547,235 @@ section.hero {
 
 .testimonial-card:hover {
   border-color: goldenrod;
-  transform: translateY(-3px) !important;
-  box-shadow: 0 8px 24px rgba(218, 165, 32, 0.15);
+  transform: translateY(-5px) !important;
+  box-shadow: 0 12px 32px rgba(218, 165, 32, 0.2);
+}
+
+.testimonial-card:hover::before {
+  transform: scaleY(1);
+}
+
+/* Google Reviews Section Styling */
+.google-reviews {
+  background: #f9f9f9;
+  padding: 4rem 2rem;
+}
+
+.reviews-intro {
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+  color: #666;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.reviews-summary {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 500px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  border: 1px solid #f0f0f0;
+}
+
+.rating-overview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.overall-rating {
+  text-align: center;
+}
+
+.rating-number {
+  font-size: 3rem;
+  font-weight: bold;
+  color: goldenrod;
+  font-family: 'Playfair Display', serif;
+  display: block;
+  line-height: 1;
+}
+
+.rating-stars {
+  color: goldenrod;
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.rating-stars i {
+  margin: 0 2px;
+}
+
+.review-count {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.google-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: #4285f4;
+}
+
+.google-badge i {
+  font-size: 2.5rem;
+}
+
+.google-badge span {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.recent-reviews {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.google-review-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.google-review-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #4285f4, #34a853, #fbbc05, #ea4335);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: left;
+}
+
+.google-review-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  border-color: #e0e0e0;
+}
+
+.google-review-card:hover::before {
+  transform: scaleX(1);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.reviewer-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.reviewer-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, goldenrod, #f4d03f);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.reviewer-details h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.review-date {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 2px;
+}
+
+.review-rating {
+  color: goldenrod;
+  font-size: 1rem;
+}
+
+.review-rating i {
+  margin: 0 1px;
+}
+
+.review-text {
+  color: #444;
+  line-height: 1.6;
+  margin: 0;
+  font-style: italic;
+}
+
+.reviews-cta {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.google-reviews-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #4285f4;
+  color: white;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.google-reviews-btn:hover {
+  background: #3367d6;
+  color: white;
+}
+
+.google-reviews-btn i {
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .google-reviews .rating-overview {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .recent-reviews {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .google-review-card {
+    padding: 1.25rem;
+  }
+  
+  .google-reviews .rating-number {
+    font-size: 2.5rem;
+  }
+  
+  .google-reviews .rating-stars {
+    font-size: 1.3rem;
+  }
 }
 
 .stars {
@@ -403,10 +824,25 @@ section.hero {
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   opacity: 0;
   transform: translateY(20px);
   aspect-ratio: 4/3;
+  cursor: pointer;
+}
+
+.gallery-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent, rgba(218, 165, 32, 0.2));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .gallery-item.animate {
@@ -419,16 +855,29 @@ section.hero {
   height: 100%;
   object-fit: cover;
   border-radius: 8px;
-  transition: all 0.5s ease;
+  transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
 .gallery-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(218, 165, 32, 0.2);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(218, 165, 32, 0.3);
+}
+
+.gallery-item:hover::before {
+  opacity: 1;
 }
 
 .gallery-item:hover img {
   transform: scale(1.05);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-cta {
+  text-align: center;
+  margin-top: 2rem;
 }
 
 @media (max-width: 768px) {
@@ -781,14 +1230,46 @@ header {
   text-decoration: none;
   font-weight: bold;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  animation: gentlePulse 3s ease-in-out infinite;
+}
+
+.call-button::before,
+.booking-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.call-button:hover::before,
+.booking-button:hover::before {
+  left: 100%;
 }
 
 .call-button:hover,
 .booking-button:hover {
   background: #d4af37;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+  animation: none;
+}
+
+.call-button:active,
+.booking-button:active {
+  transform: translateY(-2px) scale(1.02);
+  transition: all 0.1s ease;
+}
+
+@keyframes gentlePulse {
+  0%, 100% { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
+  50% { box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3); }
 }
 
 .call-button i,
@@ -881,6 +1362,40 @@ body.menu-open .menu-overlay {
     font-size: 1rem;
   }
 
+  .hero-features {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+  }
+
+  .feature-badge {
+    font-size: 0.85rem;
+    padding: 0.6rem 0.9rem;
+  }
+
+  .hero-brand {
+    font-size: 2.2rem;
+  }
+
+  .services-preview {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  .service-card-mini {
+    padding: 1rem;
+  }
+
+  .service-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .service-icon i {
+    font-size: 20px;
+  }
+
   .image-grid {
     grid-template-columns: 1fr;
   }
@@ -955,6 +1470,7 @@ body.menu-open .menu-overlay {
   margin: 0 auto;
   gap: 40px;
   flex-wrap: wrap;
+  align-items: stretch;
 }
 
 .contact-info {
@@ -964,6 +1480,10 @@ body.menu-open .menu-overlay {
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 450px;
 }
 
 .contact-info h3 {
@@ -998,6 +1518,8 @@ body.menu-open .menu-overlay {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
 }
 
 .map-container iframe {
@@ -1014,15 +1536,18 @@ body.menu-open .menu-overlay {
   .contact-content {
     flex-direction: column;
     gap: 20px;
+    align-items: stretch;
   }
 
   .contact-info,
   .map-container {
     width: 100%;
+    min-height: auto;
   }
 
   .contact-info {
     text-align: center;
+    padding: 20px;
   }
 
   .map-container {
