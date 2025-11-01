@@ -9,6 +9,11 @@
 </head>
 <body class="page-load">
   <header>
+    <button class="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <nav>
       <ul>
         <li><a href="home.html">Home</a></li>
@@ -18,7 +23,90 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
+    <div class="header-actions">
+      <a href="contact.html" class="header-booking" aria-label="Book Now">
+        <i class="fas fa-calendar-check"></i>
+        <span>Book Now</span>
+      </a>
+    </div>
   </header>
+
+  <div class="menu-overlay"></div>
+  
+  <script>
+    // Hamburger menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('nav');
+    const body = document.body;
+    const overlay = document.querySelector('.menu-overlay');
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    function toggleMenu() {
+      hamburger.classList.toggle('active');
+      nav.classList.toggle('active');
+      body.classList.toggle('menu-open');
+    }
+
+    function closeMenu() {
+      hamburger.classList.remove('active');
+      nav.classList.remove('active');
+      body.classList.remove('menu-open');
+    }
+    
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMenu();
+    });
+
+    // Close menu when clicking overlay
+    overlay.addEventListener('click', closeMenu);
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target) && !hamburger.contains(e.target) && nav.classList.contains('active')) {
+        closeMenu();
+      }
+    });
+
+    // Close menu when clicking a link
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Touch events for swipe gestures
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    document.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].clientX;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const deltaX = touchEndX - touchStartX;
+      
+      if (deltaX > swipeThreshold && !nav.classList.contains('active')) {
+        // Swipe right, open menu
+        toggleMenu();
+      } else if (deltaX < -swipeThreshold && nav.classList.contains('active')) {
+        // Swipe left, close menu
+        closeMenu();
+      }
+    }
+
+    // Prevent zoom on double tap for touch devices
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', (e) => {
+      const now = Date.now();
+      if (now - lastTouchEnd <= 300) {
+        e.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, { passive: false });
+  </script>
 
   <section class="gallery animate-on-scroll">
     <h2>Our Nail Art Gallery</h2>
@@ -81,6 +169,28 @@
       </div>
     </div>
   </footer>
+</footer>
+
+  <!-- Floating Call Button -->
+  <div class="floating-call">
+    <a href="tel:9193670728" class="call-button">
+      <i class="fas fa-phone"></i>
+      <span>Call Now</span>
+    </a>
+  </div>
+
+  <!-- Floating Booking Button -->
+  <div class="floating-booking">
+    <a href="contact.html" class="booking-button" aria-label="Book Now">
+      <i class="fas fa-calendar-check"></i>
+      <span>Book Now</span>
+    </a>
+  </div>
+
+  <!-- Back to top button -->
+  <div class="back-to-top" id="backToTop">
+    <i class="fas fa-chevron-up"></i>
+  </div>
 
   <script>
     // Scroll animation
